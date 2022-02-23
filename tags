@@ -38,6 +38,7 @@ Arena	src/utils.h	/^typedef struct Arena {$/;"	s
 Arena	src/utils.h	/^} Arena;$/;"	t	typeref:struct:Arena
 Axis	src/utils.h	/^typedef enum Axis {$/;"	g
 Axis	src/utils.h	/^} Axis;$/;"	t	typeref:enum:Axis
+BYTES_PER_PIXEL	src/sdl2_main.c	/^#define BYTES_PER_PIXEL /;"	d	file:
 Big	include/nuklear.h	/^template<typename T> struct nk_alignof{struct Big {T x; char c;}; enum {$/;"	s	struct:nk_alignof
 CC	makefile	/^CC = clang$/;"	m
 CFLAGS	makefile	/^CFLAGS = `sdl2-config --cflags --libs` $(INCLUDE) $(WARNINGS) src\/sdl2_main.c -g$/;"	m
@@ -66,13 +67,9 @@ DLL_REMOVE_NP	src/utils.h	/^#define DLL_REMOVE_NP(/;"	d
 DayOfWeek	src/utils.h	/^typedef enum DayOfWeek {$/;"	g
 DayOfWeek	src/utils.h	/^} DayOfWeek;$/;"	t	typeref:enum:DayOfWeek
 GAME_H	src/game.h	/^#define GAME_H$/;"	d
-GAME_IMPLEMENTATION	src/game.h	/^#undef GAME_IMPLEMENTATION$/;"	d
-GAME_IMPLEMENTATION	src/sdl2_main.c	/^#define GAME_IMPLEMENTATION$/;"	d	file:
 GB	src/utils.h	/^#define GB(/;"	d
 GLUE	src/utils.h	/^#define GLUE(/;"	d
 GLUE_	src/utils.h	/^#define GLUE_(/;"	d
-Game	src/game.h	/^typedef struct Game {$/;"	s
-Game	src/game.h	/^} Game; $/;"	t	typeref:struct:Game
 INCLUDE	makefile	/^INCLUDE = -I.\/include\/ $/;"	m
 IS_POWER_OF_2	src/utils.h	/^#define IS_POWER_OF_2(/;"	d
 JAI_UTILS_IMPLEMENTATION	src/sdl2_main.c	/^#define JAI_UTILS_IMPLEMENTATION$/;"	d	file:
@@ -606,6 +603,7 @@ OS_WINDOWS	src/utils.h	/^#undef OS_WINDOWS$/;"	d
 OperatingSystem	src/utils.h	/^typedef enum OperatingSystem {$/;"	g
 OperatingSystem	src/utils.h	/^} OperatingSystem;$/;"	t	typeref:enum:OperatingSystem
 PTR_FROM_UINT	src/utils.h	/^#define PTR_FROM_UINT(/;"	d
+SDL2_MAIN_H	src/sdl2_main.h	/^#define SDL2_MAIN_H$/;"	d
 SIDE_MAX	src/utils.h	/^    SIDE_MAX$/;"	e	enum:Side
 SIDE_MIN	src/utils.h	/^    SIDE_MIN,$/;"	e	enum:Side
 SLL_QUEUE_POP	src/utils.h	/^#define SLL_QUEUE_POP(/;"	d
@@ -974,6 +972,7 @@ dec_symbol	include/nuklear.h	/^    enum nk_symbol_type dec_symbol;$/;"	m	struct:
 default_font	include/nuklear.h	/^    struct nk_font *default_font;$/;"	m	struct:nk_font_atlas	typeref:struct:nk_font_atlas::nk_font
 delete_length	include/nuklear.h	/^   short delete_length;$/;"	m	struct:nk_text_undo_record
 delta	include/nuklear.h	/^    struct nk_vec2 delta;$/;"	m	struct:nk_mouse	typeref:struct:nk_mouse::nk_vec2
+deltaTime	src/game.h	/^  f32 deltaTime;$/;"	m	struct:game_Input
 delta_time_seconds	include/nuklear.h	/^    float delta_time_seconds;$/;"	m	struct:nk_context
 descent	include/nuklear.h	/^    float ascent, descent;$/;"	m	struct:nk_baked_font
 diff	include/nuklear.h	/^    diff = sizeof(Big) - sizeof(T), value = nk_helper<Big, diff>::value};};$/;"	e	enum:nk_alignof::__anon5
@@ -1073,6 +1072,11 @@ g	include/nuklear.h	/^struct nk_color {nk_byte r,g,b,a;};$/;"	m	struct:nk_color
 g	include/nuklear.h	/^struct nk_colorf {float r,g,b,a;};$/;"	m	struct:nk_colorf
 game_Input	src/game.h	/^typedef struct game_Input {$/;"	s
 game_Input	src/game.h	/^} game_Input;$/;"	t	typeref:struct:game_Input
+game_VideoBuffer	src/game.h	/^typedef struct game_VideoBuffer {$/;"	s
+game_VideoBuffer	src/game.h	/^} game_VideoBuffer;$/;"	t	typeref:struct:game_VideoBuffer
+game_render	src/game.c	/^game_render(){}$/;"	f
+game_run	src/game.c	/^game_run(game_VideoBuffer* videoBuffer,$/;"	f
+game_update	src/game.c	/^game_update(game_Input* input){}$/;"	f
 global	src/utils.h	/^#define global /;"	d
 global_alpha	include/nuklear.h	/^    float global_alpha; \/* global alpha value *\/$/;"	m	struct:nk_convert_config
 glyf	include/nuklear.h	/^    int loca,head,glyf,hhea,hmtx,kern; \/* table locations as offset from start of .ttf *\/$/;"	m	struct:nk_tt_fontinfo
@@ -1154,6 +1158,8 @@ height	include/nuklear.h	/^    int height;$/;"	m	struct:nk_rp_context
 height	include/nuklear.h	/^   float height; \/* height of line *\/$/;"	m	struct:nk_text_find
 height	include/stb_truetype.h	/^    int   height;$/;"	m	struct:stbtt_pack_context
 height	include/stb_truetype.h	/^    int width,height;$/;"	m	struct:__anon30
+height	src/game.h	/^  i32 height;$/;"	m	struct:game_VideoBuffer
+height	src/sdl2_main.h	/^  i32 height;$/;"	m	struct:sdl2_Backbuffer
 heuristic	include/nuklear.h	/^    int heuristic;$/;"	m	struct:nk_rp_context
 hhea	include/nuklear.h	/^    int loca,head,glyf,hhea,hmtx,kern; \/* table locations as offset from start of .ttf *\/$/;"	m	struct:nk_tt_fontinfo
 hhea	include/stb_truetype.h	/^    int loca,head,glyf,hhea,hmtx,kern,gpos,svg; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo
@@ -1263,7 +1269,7 @@ localPersist	src/utils.h	/^#define localPersist /;"	d
 machine_epsilon_f32	src/utils.h	/^global f32 machine_epsilon_f32 = 1.1920929e-7f;$/;"	v
 machine_epsilon_f64	src/utils.h	/^global f64 machine_epsilon_f64 = 2.220446e-16;$/;"	v
 main	include/stb_truetype.h	/^int main(int argc, char **argv)$/;"	f
-main	src/sdl2_main.c	/^main(int argCount, char** args) {$/;"	f
+main	src/sdl2_main.c	/^main(int argCount, char** args) { $/;"	f
 marker	include/nuklear.h	/^    struct nk_buffer_marker marker[NK_BUFFER_MAX];$/;"	m	struct:nk_buffer	typeref:struct:nk_buffer::nk_buffer_marker
 max	include/nuklear.h	/^    float min, max, range;$/;"	m	struct:nk_chart_slot
 max_value	include/nuklear.h	/^    union nk_property max_value;$/;"	m	struct:nk_property_variant	typeref:union:nk_property_variant::nk_property
@@ -1274,6 +1280,8 @@ maximize_symbol	include/nuklear.h	/^    enum nk_symbol_type maximize_symbol;$/;"
 memory	include/nuklear.h	/^    struct nk_buffer memory;$/;"	m	struct:nk_context	typeref:struct:nk_context::nk_buffer
 memory	include/nuklear.h	/^    struct nk_memory memory;$/;"	m	struct:nk_buffer	typeref:struct:nk_buffer::nk_memory
 memory	include/nuklear.h	/^    void *memory;$/;"	m	struct:nk_memory_status
+memory	src/game.h	/^  void* memory;$/;"	m	struct:game_VideoBuffer
+memory	src/sdl2_main.h	/^  void* memory;$/;"	m	struct:sdl2_Backbuffer
 memoryBlockStart	src/og_allocators.h	/^    memoryIndex memoryBlockStart; \/\/ The previous offset, set using function, initialize to zero$/;"	m	struct:__anon32
 memoryBlockStart	src/utils.h	/^    memoryIndex memoryBlockStart; \/\/ The previous offset, set using function, initialize to zero$/;"	m	struct:Arena
 memoryIndex	src/utils.h	/^typedef size_t memoryIndex;$/;"	t
@@ -2416,6 +2424,8 @@ path_offset	include/nuklear.h	/^    unsigned int path_offset;$/;"	m	struct:nk_dr
 permanent	include/nuklear.h	/^    struct nk_allocator permanent;$/;"	m	struct:nk_font_atlas	typeref:struct:nk_font_atlas::nk_allocator
 pi_f32	src/utils.h	/^global f32 pi_f32 = 3.14159265359f;$/;"	v
 pi_f64	src/utils.h	/^global f64 pi_f64 = 3.14159265359;$/;"	v
+pitch	src/game.h	/^  i32 pitch;$/;"	m	struct:game_VideoBuffer
+pitch	src/sdl2_main.h	/^  i32 pitch;$/;"	m	struct:sdl2_Backbuffer
 pixel	include/nuklear.h	/^    void *pixel;$/;"	m	struct:nk_font_atlas
 pixel_snap	include/nuklear.h	/^    unsigned char pixel_snap;$/;"	m	struct:nk_font_config
 pixels	include/nuklear.h	/^    unsigned char *pixels;$/;"	m	struct:nk_tt_pack_context
@@ -2509,7 +2519,12 @@ scrollbar_size	include/nuklear.h	/^    struct nk_vec2 scrollbar_size;$/;"	m	stru
 scrolled	include/nuklear.h	/^    unsigned int scrolled;$/;"	m	struct:nk_window
 scrollh	include/nuklear.h	/^    struct nk_style_scrollbar scrollh;$/;"	m	struct:nk_style	typeref:struct:nk_style::nk_style_scrollbar
 scrollv	include/nuklear.h	/^    struct nk_style_scrollbar scrollv;$/;"	m	struct:nk_style	typeref:struct:nk_style::nk_style_scrollbar
-sdl2_processInput	src/sdl2_main.c	/^sdl2_processInput() {$/;"	f
+sdl2_Backbuffer	src/sdl2_main.h	/^typedef struct sdl2_Backbuffer {$/;"	s
+sdl2_Backbuffer	src/sdl2_main.h	/^} sdl2_Backbuffer;$/;"	t	typeref:struct:sdl2_Backbuffer
+sdl2_handle_events	src/sdl2_main.c	/^sdl2_handle_events() {$/;"	f
+sdl2_init_platform	src/sdl2_main.c	/^sdl2_init_platform(SDL_Window** window,$/;"	f
+sdl2_render	src/sdl2_main.c	/^sdl2_render(SDL_Renderer* renderer,$/;"	f
+sdl2_resize_texture	src/sdl2_main.c	/^sdl2_resize_texture(SDL_Renderer* renderer,$/;"	f
 sel_end	include/nuklear.h	/^    int sel_end;$/;"	m	struct:nk_edit_state
 sel_start	include/nuklear.h	/^    int sel_start;$/;"	m	struct:nk_edit_state
 select_end	include/nuklear.h	/^    int select_end;$/;"	m	struct:nk_property_state
@@ -2783,6 +2798,7 @@ tbl	include/nuklear.h	/^    struct nk_table tbl;$/;"	m	union:nk_page_data	typere
 temp_bitmap	include/stb_truetype.h	/^unsigned char temp_bitmap[512*512];$/;"	v
 templates	include/nuklear.h	/^    float templates[NK_MAX_LAYOUT_ROW_TEMPLATE_COLUMNS];$/;"	m	struct:nk_row_layout
 temporary	include/nuklear.h	/^    struct nk_allocator temporary;$/;"	m	struct:nk_font_atlas	typeref:struct:nk_font_atlas::nk_allocator
+test_fill_red	src/game.c	/^test_fill_red(game_VideoBuffer* backbuffer) {$/;"	f
 tex_height	include/nuklear.h	/^    int tex_height;$/;"	m	struct:nk_font_atlas
 tex_width	include/nuklear.h	/^    int tex_width;$/;"	m	struct:nk_font_atlas
 text	include/nuklear.h	/^    char text[NK_INPUT_MAX];$/;"	m	struct:nk_keyboard
@@ -2816,6 +2832,7 @@ texture	include/nuklear.h	/^    nk_handle texture; \/* texture handle to a textu
 texture	include/nuklear.h	/^    nk_handle texture;$/;"	m	struct:nk_draw_command
 texture	include/nuklear.h	/^    nk_handle texture;$/;"	m	struct:nk_font
 texture	include/nuklear.h	/^    nk_handle texture;$/;"	m	struct:nk_user_font
+texture	src/sdl2_main.h	/^  SDL_Texture* texture;$/;"	m	struct:sdl2_Backbuffer
 tooltip_border	include/nuklear.h	/^    float tooltip_border;$/;"	m	struct:nk_style_window
 tooltip_border_color	include/nuklear.h	/^    struct nk_color tooltip_border_color;$/;"	m	struct:nk_style_window	typeref:struct:nk_style_window::nk_color
 tooltip_padding	include/nuklear.h	/^    struct nk_vec2 tooltip_padding;$/;"	m	struct:nk_style_window	typeref:struct:nk_style_window::nk_vec2
@@ -2938,6 +2955,8 @@ width	include/nuklear.h	/^    int width;$/;"	m	struct:nk_rp_context
 width	include/nuklear.h	/^    nk_text_width_f width;$/;"	m	struct:nk_user_font
 width	include/stb_truetype.h	/^    int   width;$/;"	m	struct:stbtt_pack_context
 width	include/stb_truetype.h	/^    int width,height;$/;"	m	struct:__anon30
+width	src/game.h	/^  i32 width;$/;"	m	struct:game_VideoBuffer
+width	src/sdl2_main.h	/^  i32 width;$/;"	m	struct:sdl2_Backbuffer
 win	include/nuklear.h	/^    struct nk_page_element win[1];$/;"	m	struct:nk_page	typeref:struct:nk_page::nk_page_element
 win	include/nuklear.h	/^    struct nk_window *win;$/;"	m	struct:nk_popup_state	typeref:struct:nk_popup_state::nk_window
 win	include/nuklear.h	/^    struct nk_window win;$/;"	m	union:nk_page_data	typeref:struct:nk_page_data::nk_window

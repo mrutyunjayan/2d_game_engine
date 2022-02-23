@@ -5,31 +5,25 @@
 
 #include "utils.h"
 
-typedef struct Game {
-
-} Game; 
+typedef struct game_VideoBuffer {
+  void* memory;
+  i32 width;
+  i32 height;
+  i32 pitch;
+} game_VideoBuffer;
 
 typedef struct game_Input {
-
+  f32 deltaTime;
 } game_Input;
 
-internal Game
-game_initialize();
-
 internal void
-game_updateAndRender(game_Input* input);
+game_run(game_VideoBuffer* videoBuffer,
+         game_Input* input);
 
 internal void
 game_update(game_Input* input);
 
 internal void
 game_render();
-
-#ifdef GAME_IMPLEMENTATION
-
-
-
-#undef GAME_IMPLEMENTATION
-#endif // GAME_IMPLEMENTATION
 
 #endif // GAME_H
